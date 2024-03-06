@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "126120698876",
+    "project_id": "data-friend-2df87",
+    "storage_bucket": "data-friend-2df87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126120698876:android:4f83e1e6ccc5a6cfeb8879",
+        "android_client_info": {
+          "package_name": "com.example.datafriend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126120698876-l3emqqgvhqpturdqfkimetg8phiah9as.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.datafriend",
+            "certificate_hash": "8200b8ff8e192fa2a50dd95596df6213ff5685d2"
+          }
+        },
+        {
+          "client_id": "126120698876-i2psbklb0c5bn3k6al89b7oina9ttvk9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFZYJjj4_vJOkee4AMwApNdrYjhiutvF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126120698876-i2psbklb0c5bn3k6al89b7oina9ttvk9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
