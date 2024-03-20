@@ -11,6 +11,8 @@ import com.firebase.ui.auth.AuthUI
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var auth:FirebaseAuth? = null
@@ -36,7 +38,43 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         when (p0?.getId()) {
-            R.id.save -> {}
+
+            R.id.save -> {
+                //Mendapatkan UserID dari pengguna yang terautentikasi
+                val getUserID = auth!!.currentUser!!.uid
+
+                //Mendapatkan Instance dari Database
+                val database = FirebaseDatabase.getInstance()
+
+                //Menyimpan Data yang diinputkan User kedalam Variabel
+                val getNama: String = binding.nama.getText().toString()
+                val getAlamat: String = binding.alamat.getText().toString()
+                val getNoHP: String = binding.noHp.getText().toString()
+
+                //Mendapatkan Referensi dari database
+                val getReference: DatabaseReference
+                getReference = database.reference
+
+                //Mengecek apakah ada data yang kosong
+                if (isEmpty(getNama) || isEmpty(getAlamat) || isEmpty(getNoHP)) {
+                    //Jika ada, maka akan menampilkan pesan singkat seperti berikut ini
+                    Toast.makeText(this@MainActivity, "Data tidak boleh ada yang kosong",
+                        Toast.LENGTH_SHORT).show()
+                } else {
+                    //Jika tidak ada, maka menyimpan ke database sesuai ID masing-masing akun
+                    getReference.child("Admin").child(getUserID).child("DataFriend").push()
+                        .setValue(data_teman(getNama, getAlamat, getNoHP))
+                        .addOnCompleteListener(this) {
+                            //bagian ini terjadi ketia user berhasil menyimpan data
+                            binding.nama.setText("")
+                            binding.alamat.setText("")
+                            binding.noHp.setText("")
+                            Toast.makeText(this@MainActivity, "Data Tersimpan",
+                                Toast.LENGTH_SHORT).show()
+                        }
+                }
+            }
+
             R.id.logout -> {
                 AuthUI.getInstance().signOut(this)
                     .addOnCompleteListener(object : OnCompleteListener<Void> {
@@ -49,7 +87,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         }
                     })
             }
+
             R.id.show_data -> {}
+
         }
     }
 }
