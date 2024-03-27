@@ -6,7 +6,8 @@ class data_teman {
     var no_hp: String? = null
     var key: String? = null
 
-    //membuat konstruktor kosong untuk membaca data snapshot constructor() {}
+    //membuat konstruktor kosong untuk membaca data snapshot
+    constructor() {}
 
     //Konstruktor dengan beberapa parameter, untuk mendapatkan Input data dari user
 
