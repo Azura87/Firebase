@@ -47,6 +47,7 @@ class MyListData : AppCompatActivity() {
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     if (dataSnapshot.exists()){
+                        dataTeman.clear()
                         for (snapshot in dataSnapshot.children){
                             val teman = snapshot.getValue(data_teman::class.java)
                             teman?.key = snapshot.key
